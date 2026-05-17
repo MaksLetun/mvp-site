@@ -115,12 +115,7 @@ button {
 }
 
 .screen::after {
-  position: absolute;
-  inset: 14px;
-  z-index: -1;
-  border: 1px solid rgba(111, 87, 136, 0.2);
-  content: "";
-  pointer-events: none;
+  display: none;
 }
 
 .screen__inner {

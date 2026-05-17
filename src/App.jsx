@@ -238,9 +238,14 @@ function App() {
           <img className="hands" src="/wedding/hands.webp" alt="" />
           <h2 id="rsvp-title">{invitation.rsvp.title}</h2>
           <p className="lead">{invitation.rsvp.text}</p>
-          <button className="button button--filled" type="button">
+          <a
+            className="button button--filled"
+            href={invitation.rsvp.formUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             {invitation.rsvp.button}
-          </button>
+          </a>
           <p className="sign">
             {invitation.rsvp.sign}
             <span>{invitation.rsvp.names}</span>
