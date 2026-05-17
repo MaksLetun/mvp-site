@@ -213,6 +213,8 @@ h2 {
 }
 
 .nowrap-title {
+  font-size: clamp(2.2rem, 5vw, 3.65rem);
+  letter-spacing: 0.08em;
   white-space: nowrap;
 }
 
