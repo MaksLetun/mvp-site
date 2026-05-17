@@ -532,4 +532,36 @@ h2 {
   .program__item span {
     letter-spacing: 0.08em;
   }
+
+  .screen--final {
+    align-items: start;
+    padding-top: 28px;
+    padding-bottom: 22px;
+  }
+
+  .screen--final .hands {
+    width: min(150px, 34vw);
+    margin-bottom: 4px;
+  }
+
+  .screen--final h2 {
+    margin-bottom: 14px;
+    font-size: clamp(1.85rem, 10vw, 2.8rem);
+  }
+
+  .screen--final .lead {
+    margin-bottom: 18px;
+    font-size: clamp(0.86rem, 3.6vw, 0.98rem);
+    line-height: 1.62;
+  }
+
+  .screen--final .sign {
+    margin-top: 18px;
+    font-size: clamp(0.86rem, 3.4vw, 1rem);
+    line-height: 1.55;
+  }
+
+  .screen--final .sign span {
+    margin-top: 4px;
+  }
 }
