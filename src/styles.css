@@ -258,14 +258,25 @@ h2 {
 }
 
 .calendar__month {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.32em;
   margin-bottom: 18px;
-  color: #4f3e5e;
+  color: #2d2434;
   font-family: "Miss Katherine Cyrillic", Georgia, serif;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: clamp(2rem, 5.8vw, 3rem);
+  font-weight: 800;
   font-style: italic;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.calendar__year {
+  display: inline-block;
+  font-size: 1.16em;
+  line-height: 1;
 }
 
 .calendar__grid {
@@ -381,12 +392,16 @@ h2 {
 
 .section-label {
   margin-bottom: 20px;
-  color: #4f3e5e;
+  color: #211829;
   font-family: "Miss Katherine Cyrillic", Georgia, serif;
+  font-size: 1.14rem;
   font-weight: 800;
   font-style: italic;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.55),
+    0 0 0.35px currentColor;
 }
 
 .program__item {
@@ -467,10 +482,11 @@ h2 {
 .sign span {
   display: block;
   margin-top: 8px;
-  font-family: "Miss Katherine Cyrillic", Georgia, serif;
-  font-size: 1.55em;
+  font-family: inherit;
+  font-size: 1.95em;
   font-style: italic;
-  letter-spacing: 0.04em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 @media (max-width: 760px) {
@@ -577,5 +593,6 @@ h2 {
 
   .screen--final .sign span {
     margin-top: 4px;
+    font-size: 2em;
   }
 }

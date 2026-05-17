@@ -2,9 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { invitation } from './data/siteContent.js';
 
 function Calendar({ calendar }) {
+  const [monthName, year] = calendar.month.split(' ');
+
   return (
     <div className="calendar" aria-label={calendar.month}>
-      <p className="calendar__month">{calendar.month}</p>
+      <p className="calendar__month">
+        <span>{monthName}</span>
+        <span className="calendar__year">{year}</span>
+      </p>
       <div className="calendar__grid calendar__grid--days">
         {calendar.days.map((day) => (
           <span key={day}>{day}</span>
