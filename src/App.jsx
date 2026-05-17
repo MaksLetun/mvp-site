@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { invitation } from './data/siteContent.js';
 
 function Calendar({ calendar }) {
@@ -23,16 +24,114 @@ function Calendar({ calendar }) {
 function App() {
   const bride = invitation.couple[0];
   const groom = invitation.couple[1];
+  const [activePage, setActivePage] = useState(0);
+  const isAnimatingRef = useRef(false);
+  const touchStartYRef = useRef(null);
+  const pageCount = 6;
+
+  const goToPage = useCallback((nextPage) => {
+    const boundedPage = Math.max(0, Math.min(pageCount - 1, nextPage));
+
+    setActivePage((currentPage) => {
+      if (currentPage === boundedPage) {
+        return currentPage;
+      }
+
+      isAnimatingRef.current = true;
+      window.setTimeout(() => {
+        isAnimatingRef.current = false;
+      }, 850);
+
+      return boundedPage;
+    });
+  }, []);
+
+  useEffect(() => {
+    const handleWheel = (event) => {
+      event.preventDefault();
+
+      if (isAnimatingRef.current || Math.abs(event.deltaY) < 12) {
+        return;
+      }
+
+      goToPage(activePage + (event.deltaY > 0 ? 1 : -1));
+    };
+
+    const handleKeyDown = (event) => {
+      const nextKeys = ['ArrowDown', 'PageDown', 'Space', ' '];
+      const previousKeys = ['ArrowUp', 'PageUp'];
+
+      if (![...nextKeys, ...previousKeys].includes(event.code)) {
+        return;
+      }
+
+      event.preventDefault();
+
+      if (isAnimatingRef.current) {
+        return;
+      }
+
+      goToPage(activePage + (nextKeys.includes(event.code) ? 1 : -1));
+    };
+
+    const handleTouchStart = (event) => {
+      touchStartYRef.current = event.touches[0].clientY;
+    };
+
+    const handleTouchMove = (event) => {
+      event.preventDefault();
+    };
+
+    const handleTouchEnd = (event) => {
+      if (touchStartYRef.current === null || isAnimatingRef.current) {
+        return;
+      }
+
+      const deltaY = touchStartYRef.current - event.changedTouches[0].clientY;
+      touchStartYRef.current = null;
+
+      if (Math.abs(deltaY) < 42) {
+        return;
+      }
+
+      goToPage(activePage + (deltaY > 0 ? 1 : -1));
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [activePage, goToPage]);
+
+  useEffect(() => {
+    const hashPage = Number(window.location.hash.replace('#page-', ''));
+
+    if (Number.isInteger(hashPage) && hashPage >= 1 && hashPage <= pageCount) {
+      setActivePage(hashPage - 1);
+    }
+  }, []);
+
+  useEffect(() => {
+    window.history.replaceState(null, '', `#page-${activePage + 1}`);
+  }, [activePage]);
 
   return (
-    <main className="invite">
-      <nav className="scroll-dots" aria-label="Навигация по приглашению">
-        {[1, 2, 3, 4, 5, 6].map((page) => (
-          <a href={`#page-${page}`} aria-label={`Страница ${page}`} key={page} />
-        ))}
-      </nav>
-
-      <section className="screen screen--hero" id="page-1" aria-labelledby="hero-title">
+    <main className="invite" style={{ '--active-page': activePage }}>
+      <section
+        className="screen screen--hero"
+        id="page-1"
+        aria-labelledby="hero-title"
+        aria-hidden={activePage !== 0}
+      >
         <div className="screen__inner screen__inner--hero">
           <p className="date">{invitation.date}</p>
           <p className="quote">{invitation.quote}</p>
@@ -44,7 +143,12 @@ function App() {
         </div>
       </section>
 
-      <section className="screen screen--floral" id="page-2" aria-labelledby="intro-title">
+      <section
+        className="screen screen--floral"
+        id="page-2"
+        aria-labelledby="intro-title"
+        aria-hidden={activePage !== 1}
+      >
         <div className="screen__inner">
           <p className="script">{invitation.intro.label}</p>
           <h2 id="intro-title">{invitation.intro.title}</h2>
@@ -53,7 +157,12 @@ function App() {
         </div>
       </section>
 
-      <section className="screen screen--floral" id="page-3" aria-labelledby="location-title">
+      <section
+        className="screen screen--floral"
+        id="page-3"
+        aria-labelledby="location-title"
+        aria-hidden={activePage !== 2}
+      >
         <div className="screen__inner screen__inner--center">
           <img className="tent" src="/wedding/tent.webp" alt="" />
           <h2 id="location-title">{invitation.location.title}</h2>
@@ -65,7 +174,12 @@ function App() {
         </div>
       </section>
 
-      <section className="screen screen--floral" id="page-4" aria-labelledby="dress-title">
+      <section
+        className="screen screen--floral"
+        id="page-4"
+        aria-labelledby="dress-title"
+        aria-hidden={activePage !== 3}
+      >
         <div className="screen__inner">
           <div className="two-column">
             <div>
@@ -91,7 +205,12 @@ function App() {
         </div>
       </section>
 
-      <section className="screen screen--floral" id="page-5" aria-labelledby="wishes-title">
+      <section
+        className="screen screen--floral"
+        id="page-5"
+        aria-labelledby="wishes-title"
+        aria-hidden={activePage !== 4}
+      >
         <div className="screen__inner">
           <div className="stack">
             <article className="text-block">
@@ -109,7 +228,12 @@ function App() {
         </div>
       </section>
 
-      <section className="screen screen--final" id="page-6" aria-labelledby="rsvp-title">
+      <section
+        className="screen screen--final"
+        id="page-6"
+        aria-labelledby="rsvp-title"
+        aria-hidden={activePage !== 5}
+      >
         <div className="screen__inner screen__inner--center">
           <img className="hands" src="/wedding/hands.webp" alt="" />
           <h2 id="rsvp-title">{invitation.rsvp.title}</h2>
