@@ -212,6 +212,10 @@ h2 {
   text-transform: uppercase;
 }
 
+.nowrap-title {
+  white-space: nowrap;
+}
+
 .lead {
   max-width: 610px;
   margin: 0 auto 38px;
@@ -504,6 +508,10 @@ h2 {
   .two-column h2,
   .two-column .lead {
     text-align: center;
+  }
+
+  .nowrap-title {
+    font-size: clamp(1.85rem, 11vw, 3rem);
   }
 
   .palette {

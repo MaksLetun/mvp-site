@@ -183,7 +183,9 @@ function App() {
         <div className="screen__inner">
           <div className="two-column">
             <div>
-              <h2 id="dress-title">{invitation.dressCode.title}</h2>
+              <h2 className="nowrap-title" id="dress-title">
+                {invitation.dressCode.title}
+              </h2>
               <p className="lead lead--small">{invitation.dressCode.text}</p>
               <div className="palette" aria-label="Цветовая гамма торжества">
                 {invitation.dressCode.colors.map((color) => (
