@@ -88,12 +88,15 @@ button {
     linear-gradient(180deg, rgba(249, 245, 250, 0.12), rgba(233, 222, 241, 0.44)),
     #efe7f4;
   content: "";
-  transform: scale(1.045);
-  transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform: scale(1.08);
+  transition:
+    transform 1200ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  filter: blur(3px);
 }
 
 .screen[aria-hidden="false"]::before {
-  transform: scale(1);
+  transform: scale(1.035);
 }
 
 .screen--hero::before {
