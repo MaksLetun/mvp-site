@@ -1,13 +1,25 @@
 :root {
   color: #32283a;
   background: #efe7f4;
-  font-family:
-    "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Czizh", "Segoe UI", Arial, sans-serif;
   font-synthesis: none;
+  font-style: italic;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "Miss Katherine Cyrillic";
+  font-display: swap;
+  src: url("/fonts/miss-katherine-cyrillic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Czizh";
+  font-display: swap;
+  src: url("/fonts/czizh.ttf") format("truetype");
 }
 
 * {
@@ -147,8 +159,8 @@ button {
 .calendar,
 .program,
 .sign {
-  font-family:
-    "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-family: "Czizh", "Segoe UI", Arial, sans-serif;
+  font-style: italic;
 }
 
 .date {
@@ -181,14 +193,17 @@ h1 {
   gap: 6px;
   margin: 0;
   color: #3f304c;
+  font-family: "Miss Katherine Cyrillic", Georgia, serif;
   font-size: clamp(3.4rem, 15vw, 8rem);
   font-weight: 400;
+  font-style: italic;
   line-height: 0.78;
   text-transform: uppercase;
 }
 
 .ampersand {
   color: #8d78a7;
+  font-family: "League Script", cursive;
   font-size: 0.55em;
   font-style: italic;
   line-height: 0.9;
@@ -197,6 +212,7 @@ h1 {
 .script {
   margin: 0 0 18px;
   color: #7b6099;
+  font-family: "Miss Katherine Cyrillic", Georgia, serif;
   font-size: clamp(1.65rem, 8vw, 4rem);
   font-style: italic;
   line-height: 1;
@@ -205,8 +221,10 @@ h1 {
 h2 {
   margin-bottom: 22px;
   color: #3f304c;
+  font-family: "Miss Katherine Cyrillic", Georgia, serif;
   font-size: clamp(2.1rem, 8vw, 4.6rem);
   font-weight: 400;
+  font-style: italic;
   letter-spacing: 0.12em;
   line-height: 1;
   text-transform: uppercase;
@@ -245,8 +263,10 @@ h2 {
 .calendar__month {
   margin-bottom: 18px;
   color: #4f3e5e;
+  font-family: "Miss Katherine Cyrillic", Georgia, serif;
   font-size: 1rem;
   font-weight: 700;
+  font-style: italic;
   letter-spacing: 0.22em;
   text-transform: uppercase;
 }
@@ -312,10 +332,10 @@ h2 {
   padding: 12px 28px;
   background: rgba(255, 255, 255, 0.45);
   color: #473450;
-  font-family:
-    "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-family: "Czizh", "Segoe UI", Arial, sans-serif;
   font-size: 0.82rem;
   font-weight: 700;
+  font-style: italic;
   letter-spacing: 0.18em;
   text-decoration: none;
   text-transform: uppercase;
@@ -367,7 +387,9 @@ h2 {
 .section-label {
   margin-bottom: 20px;
   color: #4f3e5e;
+  font-family: "Miss Katherine Cyrillic", Georgia, serif;
   font-weight: 800;
+  font-style: italic;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -427,9 +449,9 @@ h2 {
 
 .text-block a {
   color: #4b3659;
-  font-family:
-    "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-family: "Czizh", "Segoe UI", Arial, sans-serif;
   font-weight: 800;
+  font-style: italic;
   letter-spacing: 0.08em;
   text-decoration: none;
 }
@@ -453,9 +475,9 @@ h2 {
 .sign span {
   display: block;
   margin-top: 8px;
-  font-family:
-    "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-family: "Miss Katherine Cyrillic", Georgia, serif;
   font-size: 1.55em;
+  font-style: italic;
   letter-spacing: 0.04em;
 }
 
