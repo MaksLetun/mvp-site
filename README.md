@@ -66,12 +66,25 @@ npm run preview
 
 ## Cloudflare Pages
 
+Текущий Pages-проект:
+
+```text
+https://mvp-site-3a4.pages.dev/
+```
+
 Настройки для деплоя:
 
 ```text
 Framework preset: Vite
 Build command: npm run build
 Build output directory: dist
+```
+
+Ручной деплой через Wrangler:
+
+```bash
+npm run build
+npx wrangler@latest pages deploy dist --project-name mvp-site --branch main
 ```
 
 Подробная инструкция лежит в `docs/deployment.md`.

@@ -41,6 +41,14 @@ git push -u origin main
 7. Дай доступ к репозиторию `MaksLetun/mvp-site`.
 8. Выбери этот репозиторий.
 
+Текущий Pages-проект уже создан через Wrangler:
+
+```text
+Project: mvp-site
+Production URL: https://mvp-site-3a4.pages.dev/
+Latest deployment URL: https://aff2edf5.mvp-site-3a4.pages.dev/
+```
+
 ## 4. Указать настройки сборки
 
 ```text
@@ -55,6 +63,12 @@ Build output directory: dist
 https://mvp-site.pages.dev
 ```
 
+В текущем аккаунте Cloudflare выдал адрес:
+
+```text
+https://mvp-site-3a4.pages.dev/
+```
+
 ## 5. Как обновлять сайт
 
 Обычный цикл:
@@ -67,6 +81,13 @@ git push
 ```
 
 После каждого `git push` Cloudflare Pages автоматически пересоберет и обновит сайт.
+
+Если проект деплоится вручную через терминал, используй:
+
+```bash
+npm run build
+npx wrangler@latest pages deploy dist --project-name mvp-site --branch main
+```
 
 ## 6. Домен позже
 
