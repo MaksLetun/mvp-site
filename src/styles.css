@@ -169,7 +169,6 @@ button {
   font-size: clamp(0.95rem, 3.4vw, 1.25rem);
   font-weight: 500;
   letter-spacing: 0.46em;
-  text-transform: uppercase;
 }
 
 .quote {
@@ -179,7 +178,6 @@ button {
   font-size: clamp(0.78rem, 2.8vw, 0.9rem);
   letter-spacing: 0.08em;
   line-height: 1.9;
-  text-transform: uppercase;
 }
 
 h1,
@@ -243,7 +241,6 @@ h2 {
   font-size: clamp(1rem, 3.8vw, 1.28rem);
   letter-spacing: 0.08em;
   line-height: 1.85;
-  text-transform: uppercase;
 }
 
 .lead--small {
@@ -315,7 +312,6 @@ h2 {
   font-size: clamp(1.05rem, 4vw, 1.35rem);
   letter-spacing: 0.14em;
   line-height: 1.8;
-  text-transform: uppercase;
 }
 
 .place--sub {
@@ -338,7 +334,6 @@ h2 {
   font-style: italic;
   letter-spacing: 0.18em;
   text-decoration: none;
-  text-transform: uppercase;
   box-shadow: 0 12px 34px rgba(80, 61, 93, 0.12);
   cursor: pointer;
 }
@@ -412,7 +407,6 @@ h2 {
   color: #3f304c;
   font-weight: 700;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .stack {
@@ -440,7 +434,6 @@ h2 {
   font-size: clamp(0.96rem, 3vw, 1.12rem);
   letter-spacing: 0.08em;
   line-height: 1.8;
-  text-transform: uppercase;
 }
 
 .text-block p:last-child {
@@ -469,7 +462,6 @@ h2 {
   font-size: clamp(1rem, 3vw, 1.18rem);
   letter-spacing: 0.08em;
   line-height: 1.8;
-  text-transform: uppercase;
 }
 
 .sign span {
