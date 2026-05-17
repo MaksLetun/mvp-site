@@ -16,14 +16,19 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
 body {
+  display: grid;
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
+  place-items: center;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.85), transparent 28rem),
+    radial-gradient(circle at 82% 88%, rgba(143, 115, 173, 0.2), transparent 30rem),
+    #e8ddef;
 }
 
 a {
@@ -35,14 +40,37 @@ button {
 }
 
 .invite {
-  min-height: 100vh;
+  position: relative;
+  width: min(100vw, 440px);
+  height: min(100svh, 956px);
+  min-height: 620px;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #efe7f4;
+  box-shadow: 0 28px 90px rgba(58, 43, 70, 0.24);
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(104, 78, 130, 0.45) rgba(255, 255, 255, 0.35);
+}
+
+.invite::-webkit-scrollbar {
+  width: 8px;
+}
+
+.invite::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.invite::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(104, 78, 130, 0.45);
 }
 
 .screen {
   position: relative;
   display: grid;
-  min-height: 100svh;
+  min-height: 100%;
   place-items: center;
   overflow: hidden;
   padding: 42px 18px;
@@ -88,14 +116,14 @@ button {
 }
 
 .screen__inner {
-  width: min(760px, 100%);
+  width: min(100%, 390px);
   margin: 0 auto;
   text-align: center;
 }
 
 .screen__inner--hero {
   display: grid;
-  min-height: min(720px, calc(100svh - 110px));
+  min-height: min(720px, calc(100% - 110px));
   align-content: center;
   padding: 14vh 24px 9vh;
 }
@@ -106,7 +134,7 @@ button {
 }
 
 .scroll-dots {
-  position: fixed;
+  position: absolute;
   top: 50%;
   right: 18px;
   z-index: 20;
@@ -146,11 +174,11 @@ button {
 }
 
 .quote {
-  max-width: 560px;
+  max-width: 340px;
   margin: 0 auto 46px;
   color: #6f6380;
-  font-size: clamp(0.86rem, 2.6vw, 1.05rem);
-  letter-spacing: 0.15em;
+  font-size: clamp(0.78rem, 2.8vw, 0.9rem);
+  letter-spacing: 0.08em;
   line-height: 1.9;
   text-transform: uppercase;
 }
@@ -166,7 +194,7 @@ h1 {
   gap: 6px;
   margin: 0;
   color: #3f304c;
-  font-size: clamp(3.4rem, 18vw, 8rem);
+  font-size: clamp(3.2rem, 15vw, 4.35rem);
   font-weight: 400;
   line-height: 0.78;
   text-transform: uppercase;
@@ -190,7 +218,7 @@ h1 {
 h2 {
   margin-bottom: 22px;
   color: #3f304c;
-  font-size: clamp(2.1rem, 8vw, 4.6rem);
+  font-size: clamp(1.9rem, 8vw, 3.25rem);
   font-weight: 400;
   letter-spacing: 0.12em;
   line-height: 1;
@@ -198,11 +226,11 @@ h2 {
 }
 
 .lead {
-  max-width: 610px;
+  max-width: 350px;
   margin: 0 auto 38px;
   color: #55465f;
-  font-size: clamp(1rem, 3.8vw, 1.28rem);
-  letter-spacing: 0.08em;
+  font-size: clamp(0.94rem, 3.8vw, 1.06rem);
+  letter-spacing: 0.06em;
   line-height: 1.85;
   text-transform: uppercase;
 }
@@ -439,8 +467,19 @@ h2 {
 }
 
 @media (max-width: 760px) {
-  .screen {
+  body {
+    display: block;
+  }
+
+  .invite {
+    width: 100vw;
+    height: 100svh;
     min-height: 100svh;
+    box-shadow: none;
+  }
+
+  .screen {
+    min-height: 100%;
     padding: 36px 18px;
   }
 
@@ -463,7 +502,7 @@ h2 {
   }
 
   .screen__inner--hero {
-    min-height: calc(100svh - 88px);
+    min-height: calc(100% - 88px);
     padding: 10vh 18px 7vh;
   }
 
